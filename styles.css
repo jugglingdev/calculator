@@ -70,22 +70,28 @@ header {
 }
 
 ul {
+    grid-column-start: 4;
     list-style-type: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
+    font-size: 18px;
 }
 
 h1 {
+    grid-column-start: 1;
     font-size: 32px;
 }
 
-h2, ul {
+h2 {
+    grid-column-start: 3;
     font-size: 18px;
 }
 
 input {
+    grid-column-start: 4;
+    grid-row-start: 2;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
@@ -93,7 +99,7 @@ input {
     border-radius: 10px;
     background: var(--keypadBackgroundTh1);
     outline: none;
-    opacity: 0.7;
+    opacity: 1;
     -webkit-transition: .2s;
     transition: opacity .2s;
     padding-left: 6px;
@@ -101,7 +107,7 @@ input {
 }
 
 input:hover {
-    opacity: 1;
+    opacity: 0.7;
 }
 
 input::-webkit-slider-thumb {
@@ -125,7 +131,7 @@ input::-moz-range-thumb {
 }
 
 .screen {
-    height: 100px;
+    height: 120px;
     border-radius: 8px;
     background-color: var(--screenBackgroundTh1);
     margin-bottom: 20px;
@@ -134,20 +140,51 @@ input::-moz-range-thumb {
 
 .keypad {
     background-color: var(--keypadBackgroundTh1);
-    margin-top: ;
     padding: 20px;
     border-radius: 8px;
 
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(5, auto);
-    grid-gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 20px;
 }
 
 button {
+    background-color: var(--key3BackgroundTh1);
+    border: none;
+    box-shadow: 0 3px var(--key3ShadowTh1);
     border-radius: 6px;
     height: 50px;
+    color: var(--text1Th1);
+    font-family: 'League Spartan', sans-serif;
     font-size: 32px;
+    padding-top: 5px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.delete, .reset {
+    background-color: var(--key1BackgroundTh1);
+    box-shadow: 0 3px var(--key1ShadowTh1);
+    color: var(--text2Th1);
+    font-size: 26px;
+}
+
+.reset {
+    grid-column: 1 / 3
+}
+
+.equals {
+    grid-column: 3 / 5;
+    background-color: var(--key2BackgroundTh1);
+    box-shadow: 0 3px var(--key2ShadowTh1);
+    color: var(--text2Th1);
+    font-size: 26px;
 }
 
 footer {
