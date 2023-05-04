@@ -47,13 +47,17 @@ body {
     font-family: 'League Spartan', sans-serif;
     font-size: 32px;
     background-color: var(--mainBackgroundTh1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 50px;
 }
 
 main {
-    width: 500px;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    width: 425px;
 }
 
 header {
@@ -186,12 +190,11 @@ button:hover {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     padding: 20px;
     text-align: center;
-    font-size: 18px;
+    line-height: 1.25em;
+    font-size: 14px;
     color: var(--text2Th1);
 }
 
@@ -215,4 +218,21 @@ footer a:hover {
 
 footer a:active {
     color: var(--key2BackgroundTh1);
+}
+
+@media only screen and (max-width: 425px) {
+    main {
+        width: calc(100% - 30px);
+    }
+
+    .keypad {
+        grid-gap: 12px;
+    }
+}
+
+@media only screen and (min-height: 774px) {
+    footer {
+        position: absolute;
+        bottom: 0;
+    }
 }
