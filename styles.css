@@ -9,6 +9,7 @@
     --toggleBackground: hsl(223, 31%, 20%);
     --screenBackground: hsl(224, 36%, 15%);
     --keypadBackground: hsl(223, 31%, 20%);
+
     --toggle: hsl(6, 63%, 50%);
     --delResBackground: hsl(225, 21%, 49%);
     --delResShadow: hsl(224, 28%, 35%);
@@ -16,34 +17,11 @@
     --equalsShadow: hsl(6, 70%, 34%);
     --numsBackground: hsl(30, 25%, 89%);
     --numsShadow: hsl(28, 16%, 65%);
-    --text1: hsl(221, 14%, 31%);
-    --text2: hsl(0, 0%, 100%);
-    --text3: hsl(0, 0%, 100%);
-
-    --mainBackgroundTh2: hsl(0, 0%, 90%);
-    --keypadBackgroundTh2: hsl(0, 5%, 81%);
-    --screenBackgroundTh2: hsl(0, 0%, 93%);
-    --key1BackgroundTh2: hsl(185, 42%, 37%);
-    --key1ShadowTh2: hsl(185, 58%, 25%);
-    --key2BackgroundTh2: hsl(25, 98%, 40%);
-    --key2ShadowTh2: hsl(25, 99%, 27%);
-    --key3BackgroundTh2: hsl(45, 7%, 89%);
-    --key3ShadowTh2: hsl(35, 11%, 61%);
-    --text1Th2: hsl(60, 10%, 19%);
-    --text2Th2: hsl(0, 0%, 100%);
-
-    --mainBackgroundTh3: hsl(268, 75%, 9%);
-    --keypadBackgroundTh3: hsl(268, 71%, 12%);
-    --screenBackgroundTh3: hsl(268, 71%, 12%);
-    --key1BackgroundTh3: hsl(281, 89%, 26%);
-    --key1ShadowTh3: hsl(285, 91%, 52%);
-    --key2BackgroundTh3: hsl(176, 100%, 44%);
-    --key2ShadowTh3: hsl(177, 92%, 70%);
-    --key3BackgroundTh3: hsl(268, 47%, 21%);
-    --key3ShadowTh3: hsl(290, 70%, 36%);
-    --text1Th3: hsl(52, 100%, 62%);
-    --text2Th3: hsl(198, 20%, 13%);
-    --text3Th3: hsl(0, 0%, 100%);
+    
+    --headerText: hsl(0, 0%, 100%);
+    --delResText: hsl(0, 0%, 100%);
+    --equalsText: hsl(0, 0%, 100%);
+    --numsText: hsl(221, 14%, 31%);
 }
 
 body {
@@ -73,7 +51,7 @@ header {
     padding-right: 5px;
     margin-bottom: 20px;
 
-    color: var(--text2);
+    color: var(--headerText);
 }
 
 ul {
@@ -156,12 +134,12 @@ input::-moz-range-thumb {
 }
 
 button {
-    background-color: var(--key3Background);
+    background-color: var(--numsBackground);
     border: none;
-    box-shadow: 0 3px var(--key3Shadow);
+    box-shadow: 0 3px var(--numsShadow);
     border-radius: 6px;
     height: 50px;
-    color: var(--text1);
+    color: var(--numsText);
     font-family: 'League Spartan', sans-serif;
     font-size: 32px;
     padding-top: 5px;
@@ -174,9 +152,9 @@ button:hover {
 }
 
 .delete, .reset {
-    background-color: var(--key1Background);
-    box-shadow: 0 3px var(--key1Shadow);
-    color: var(--text2);
+    background-color: var(--delResBackground);
+    box-shadow: 0 3px var(--delResShadow);
+    color: var(--delResText);
     font-size: 26px;
 }
 
@@ -186,9 +164,9 @@ button:hover {
 
 .equals {
     grid-column: 3 / 5;
-    background-color: var(--key2Background);
-    box-shadow: 0 3px var(--key2Shadow);
-    color: var(--text2);
+    background-color: var(--equalsBackground);
+    box-shadow: 0 3px var(--equalsShadow);
+    color: var(--equalsText);
     font-size: 26px;
 }
 
@@ -198,29 +176,34 @@ footer {
     text-align: center;
     line-height: 1.25em;
     font-size: 14px;
-    color: var(--text2);
+    color: var(--headerText);
 }
 
 footer a {
-    color: var(--key1Background);
+    color: var(--toggle);
 }
 
 footer a:link {
-    color: var(--screenBackground);
+    color: var(--toggle);
     text-decoration: none;
 }
 
-footer a:visited {
-    color: var(--key2Background);
-}
-
 footer a:hover {
-    color: var(--keypadBackground);
+    color: var(--toggle);
     text-decoration: underline;
 }
 
 footer a:active {
-    color: var(--key2Background);
+    color: var(--toggleBackground);
+}
+
+footer a:visited {
+    color: var(--delResBackground);
+}
+
+footer a:visited:hover {
+    color: var(--delResBackground);
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 425px) {

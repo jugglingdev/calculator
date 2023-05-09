@@ -58,9 +58,23 @@ function changeKeyColors(value) {
     }
 }
 
-function changeTextColors() {
-    // header, screen, numbers
-    // del, reset, equals
+function changeTextColors(value) {
+    if (value == '1') {
+        root.style.setProperty('--headerText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--delResText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--equalsText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--numsText', 'hsl(221, 14%, 31%)');
+    } else if (value == '2') {
+        root.style.setProperty('--headerText', 'hsl(60, 10%, 19%)');
+        root.style.setProperty('--delResText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--equalsText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--numsText', 'hsl(60, 10%, 19%)');
+    } else {
+        root.style.setProperty('--headerText', 'hsl(52, 100%, 62%)');
+        root.style.setProperty('--delResText', 'hsl(0, 0%, 100%)');
+        root.style.setProperty('--equalsText', 'hsl(198, 20%, 13%)');
+        root.style.setProperty('--numsText', 'hsl(52, 100%, 62%)');
+    }
 }
 
 // add
