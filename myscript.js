@@ -1,3 +1,46 @@
+const themeSlider = document.querySelector('input');
+let currentTheme = themeSlider.value;
+
+const root = document.documentElement;
+
+themeSlider.onchange = (e) => changeTheme(e.target.value);
+
+function changeTheme(value) {
+    changeBackgroundColors(value);
+    changeKeyColors(value);
+    changeTextColors(value);
+}
+
+function changeBackgroundColors(value) {
+    if (value == '1') {
+        root.style.setProperty('--mainBackground', 'hsl(222, 26%, 31%)');
+        root.style.setProperty('--toggleBackground', 'hsl(223, 31%, 20%)');
+        root.style.setProperty('--screenBackground', 'hsl(224, 36%, 15%)');
+        root.style.setProperty('--keypadBackground', 'hsl(223, 31%, 20%)');
+    } else if (value == '2') {
+        root.style.setProperty('--mainBackground', 'hsl(0, 0%, 90%)');
+        root.style.setProperty('--toggleBackground', 'hsl(0, 5%, 81%)');
+        root.style.setProperty('--screenBackground', 'hsl(0, 0%, 93%)');
+        root.style.setProperty('--keypadBackground', 'hsl(0, 5%, 81%)');
+    } else {
+        root.style.setProperty('--mainBackground', 'hsl(268, 75%, 9%)');
+        root.style.setProperty('--toggleBackground', 'hsl(268, 71%, 12%)');
+        root.style.setProperty('--screenBackground', 'hsl(268, 71%, 12%)');
+        root.style.setProperty('--keypadBackground', 'hsl(268, 71%, 12%)');
+    }
+}
+
+function changeKeyColors() {
+    //numbers
+    //del, reset
+    // equals
+}
+
+function changeTextColors() {
+    // header, screen, numbers
+    // del, reset, equals
+}
+
 // add
 // subtract
 // multiply
