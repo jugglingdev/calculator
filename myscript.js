@@ -30,10 +30,32 @@ function changeBackgroundColors(value) {
     }
 }
 
-function changeKeyColors() {
-    //numbers
-    //del, reset
-    // equals
+function changeKeyColors(value) {
+    if (value == '1') {
+        root.style.setProperty('--toggle', 'hsl(6, 63%, 50%)');
+        root.style.setProperty('--delResBackground', 'hsl(225, 21%, 49%)');
+        root.style.setProperty('--delResShadow', 'hsl(224, 28%, 35%)');
+        root.style.setProperty('--equalsBackground', 'hsl(6, 63%, 50%)');
+        root.style.setProperty('--equalsShadow', 'hsl(6, 70%, 34%)');
+        root.style.setProperty('--numsBackground', 'hsl(30, 25%, 89%)');
+        root.style.setProperty('--numsShadow', 'hsl(28, 16%, 65%)');
+    } else if (value == '2') {
+        root.style.setProperty('--toggle', 'hsl(25, 98%, 40%)');
+        root.style.setProperty('--delResBackground', 'hsl(185, 42%, 37%)');
+        root.style.setProperty('--delResShadow', 'hsl(185, 58%, 25%)');
+        root.style.setProperty('--equalsBackground', 'hsl(25, 98%, 40%)');
+        root.style.setProperty('--equalsShadow', 'hsl(25, 99%, 27%)');
+        root.style.setProperty('--numsBackground', 'hsl(45, 7%, 89%)');
+        root.style.setProperty('--numsShadow', 'hsl(35, 11%, 61%)');
+    } else {
+        root.style.setProperty('--toggle', 'hsl(176, 100%, 44%)');
+        root.style.setProperty('--delResBackground', 'hsl(281, 89%, 26%)');
+        root.style.setProperty('--delResShadow', 'hsl(285, 91%, 52%)');
+        root.style.setProperty('--equalsBackground', 'hsl(176, 100%, 44%)');
+        root.style.setProperty('--equalsShadow', 'hsl(177, 92%, 70%)');
+        root.style.setProperty('--numsBackground', 'hsl(268, 47%, 21%)');
+        root.style.setProperty('--numsShadow', 'hsl(290, 70%, 36%)');
+    }
 }
 
 function changeTextColors() {
