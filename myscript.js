@@ -1,7 +1,7 @@
-const themeSlider = document.querySelector('input');
-let currentTheme = themeSlider.value;
+// Themes
 
 const root = document.documentElement;
+const themeSlider = document.querySelector('input');
 
 themeSlider.onchange = (e) => changeTheme(e.target.value);
 
@@ -77,13 +77,113 @@ function changeTextColors(value) {
     }
 }
 
-// add
-// subtract
-// multiply
-// divide
+// Calculator
 
-// variables:  num1 operator num2
-// also: displayValue
+const one = document.querySelector('.one');
+const two = document.querySelector('.two');
+const three = document.querySelector('.three');
+const four = document.querySelector('.four');
+const five = document.querySelector('.five');
+const six = document.querySelector('.six');
+const seven = document.querySelector('.seven');
+const eight = document.querySelector('.eight');
+const nine = document.querySelector('.nine');
+const zero = document.querySelector('.zero');
+const point = document.querySelector('.point');
+const plus = document.querySelector('.plus');
+const minus = document.querySelector('.minus');
+const times = document.querySelector('.times');
+const dividedBy = document.querySelector('.divided-by');
+const equals = document.querySelector('.equals');
+const del = document.querySelector('.delete');
+const reset = document.querySelector('.reset');
+
+let num = [];
+let num1;
+let num2;
+let operator;
+let total;
+let displayValue;
+
+one.onclick = () => setNum('1');
+two.onclick = () => setNum('2');
+three.onclick = () => setNum('3');
+four.onclick = () => setNum('4');
+five.onclick = () => setNum('5');
+six.onclick = () => setNum('6');
+seven.onclick = () => setNum('7');
+eight.onclick = () => setNum('8');
+nine.onclick = () => setNum('9');
+zero.onclick = () => setNum('0');
+point.onclick = () => setNum('.'); 
+
+plus.onclick = () => setOperator('+');
+minus.onclick = () => setOperator('-');
+times.onclick = () => setOperator('*');
+dividedBy.onclick = () => setOperator('/');
+equals.onclick = () => calculate();
+del.onclick = () => del();
+reset.onclick = () => reset();
+
+function setNum(buttonValue) {
+    num.push(buttonValue);
+}
+
+function setOperator(buttonValue) {
+    operator = buttonValue;
+    setNum1();
+}
+
+function setNum1() {
+    num1 = num.join('');
+    num1 = parseFloat(num1);
+    clearNum();
+}
+
+function clearNum() {
+    num = [];
+}
+
+function calculate() {
+    total = num1 + operator + num1;
+    displayResult();
+}
+
+function displayResult() {
+    
+}
+
+// Add
+const add = function(num1, num2) {
+	return parseInt(num1 + num2);
+};
+
+// Subtract
+const subtract = function(num1, num2) {
+	return parseInt(num1 - num2);
+};
+
+// Multiply
+const multiply = function(array) {
+    let answer = 1;
+    for (let item in array) {
+      answer *= array[item];
+    }
+    return answer;
+  };
+
+function del() {
+    num.pop();
+}
+
+function reset() {
+    num = [];
+    num1 = '';
+    num2 = '';
+    operator = '';
+    total = '';
+    displayValue = '';
+}
 
 // function operate(num1 operator num2)
 
@@ -100,12 +200,8 @@ function changeTextColors(value) {
 
 //pressing = before entering all the numbers or an operator could cause problems!
 
-// pressing clear/reset should wipe out any existing data
-
 // display an error message if the user tries to divide by 0
 
 // don't allow more than one decimal (12.3.56..5)
-
-// backspace/delete for undoing a number
 
 // double check / support - check MDN event.preventDefault
