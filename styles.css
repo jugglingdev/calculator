@@ -62,6 +62,7 @@ ul {
     justify-content: space-around;
     align-items: flex-end;
     font-size: 18px;
+    padding-left: 3px;
 }
 
 h1 {
@@ -86,7 +87,7 @@ input {
     outline: none;
     -webkit-transition: .2s;
     transition: .2s;
-    padding-left: 6px;
+    padding-left: 7px;
     padding-right: 6px;
 }
 
