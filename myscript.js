@@ -89,21 +89,25 @@ const seven = document.querySelector('.seven');
 const eight = document.querySelector('.eight');
 const nine = document.querySelector('.nine');
 const zero = document.querySelector('.zero');
+
 const point = document.querySelector('.point');
 const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
 const times = document.querySelector('.times');
 const dividedBy = document.querySelector('.divided-by');
+
 const equals = document.querySelector('.equals');
-const del = document.querySelector('.delete');
-const reset = document.querySelector('.reset');
+const backspace = document.querySelector('.delete');
+const clear = document.querySelector('.reset');
+
+let screen = document.querySelector('.display');
 
 let num = [];
+let displayValue;
 let num1;
 let num2;
 let operator;
 let total;
-let displayValue;
 
 one.onclick = () => setNum('1');
 two.onclick = () => setNum('2');
@@ -122,11 +126,18 @@ minus.onclick = () => setOperator('-');
 times.onclick = () => setOperator('*');
 dividedBy.onclick = () => setOperator('/');
 equals.onclick = () => calculate();
-del.onclick = () => del();
-reset.onclick = () => reset();
+backspace.onclick = () => del();
+clear.onclick = () => reset();
 
 function setNum(buttonValue) {
     num.push(buttonValue);
+    updateDisplayValue();
+}
+
+function updateDisplayValue() {
+    displayValue = num.join('');
+    displayValue = parseFloat(displayValue);
+    screen.textContent = displayValue;
 }
 
 function setOperator(buttonValue) {
@@ -205,3 +216,4 @@ function reset() {
 // don't allow more than one decimal (12.3.56..5)
 
 // double check / support - check MDN event.preventDefault
+
