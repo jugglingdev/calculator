@@ -103,10 +103,8 @@ const clear = document.querySelector('.reset');
 let screenValue = document.querySelector('.screen-value');
 
 let num = [];
-let num1;
-let num2;
-let operator;
 let total;
+let operator;
 
 one.onclick = () => setNum('1');
 two.onclick = () => setNum('2');
@@ -130,33 +128,23 @@ clear.onclick = () => reset();
 
 function setNum(buttonValue) {
     num.push(buttonValue);
-    updateScreenValue();
-    disablePoint();
-    exceptions();
+    updateScreenValue(num);
+    // disablePoint();
+    // exceptions();
 }
 
-function updateScreenValue() {
-    num1 = num.join('');
-    //num1 = parseFloat(num1);
-    screenValue.textContent = num1;
-}
-
-function disablePoint() {
-    const dot = '.';
-    if (screenValue.textContent.includes(dot)) {
-        point.removeEventListener('click', setNum);
-    }
-    return;
+function updateScreenValue(num) {
+    num = num.join('');
+    screenValue.textContent = num;
 }
 
 function setOperator(buttonValue) {
     operator = buttonValue;
-    setNum1();
+    updateTotal();
 }
 
-function setNum1() {
-    num1 = num.join('');
-    num1 = parseFloat(num1);
+function updateTotal() {
+    total = parseFloat(num);
     clearNum();
 }
 
@@ -172,32 +160,35 @@ function calculate() {
 }
 
 function add() {
+    num = parseFloat(num);
     if (operator == '+') {  
-        total = num1 + num2;
+        total += num;
         displayTotal(total);
-    }
-    return;
+    };
 }
 
 function subtract() {
+    num = parseFloat(num);
     if (operator == '-') {  
-        total = num1 - num2;
+        total -= num;
         displayTotal(total);
     }
     return;
 }
 
 function multiply() {
+    num = parseFloat(num);
     if (operator == '*') {  
-        total = num1 * num2;
+        total *= num;
         displayTotal(total);
     }
     return;
 }
 
 function divide() {
+    num = parseFloat(num);
     if (operator == '/') {  
-        total = num1 / num2;
+        total /= num;
         displayTotal(total);
     }
     return;
@@ -209,25 +200,35 @@ function displayTotal(total) {
 
 function del() {
     num.pop();
+    screenValue.textContent = num;
 }
 
 function reset() {
     num = [];
-    num1 = '';
-    num2 = '';
     operator = '';
     total = '';
     screenValue.textContent = '';
 }
 
-function exceptions() {
-    const decimals = ['.', '.'];
-    try {
-        if (num2 == '0') throw 'Error';
-        if (decimals.every(i => screenValue.textContent.includes(i))) throw 'Error';
-        if (screenValue.textContent.length > 11) throw 'Overflow';
-    }
-    catch (err) {
-        screenValue.textContent = err;
-    }
-}
+
+// function disablePoint() {
+//     const dot = '.';
+//     if (screenValue.textContent.includes(dot)) {
+//         point.removeEventListener('click', setNum);
+//     }
+//     return;
+// }
+
+
+
+// function exceptions() {
+//     const decimals = ['.', '.'];
+//     try {
+//         if (operator == '/' && num == '0') throw 'Error';
+//         if (decimals.every(i => screenValue.textContent.includes(i))) throw 'Error';
+//         if (screenValue.textContent.length > 11) throw 'Overflow';
+//     }
+//     catch (err) {
+//         screenValue.textContent = err;
+//     }
+// }
