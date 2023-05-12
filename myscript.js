@@ -100,10 +100,9 @@ const equals = document.querySelector('.equals');
 const backspace = document.querySelector('.delete');
 const clear = document.querySelector('.reset');
 
-let screen = document.querySelector('.display');
+let screenValue = document.querySelector('.screen-value');
 
 let num = [];
-let displayValue;
 let num1;
 let num2;
 let operator;
@@ -131,13 +130,23 @@ clear.onclick = () => reset();
 
 function setNum(buttonValue) {
     num.push(buttonValue);
-    updateDisplayValue();
+    updateScreenValue();
+    disablePoint();
+    exceptions();
 }
 
-function updateDisplayValue() {
-    displayValue = num.join('');
-    displayValue = parseFloat(displayValue);
-    screen.textContent = displayValue;
+function updateScreenValue() {
+    num1 = num.join('');
+    //num1 = parseFloat(num1);
+    screenValue.textContent = num1;
+}
+
+function disablePoint() {
+    const dot = '.';
+    if (screenValue.textContent.includes(dot)) {
+        point.removeEventListener('click', setNum);
+    }
+    return;
 }
 
 function setOperator(buttonValue) {
@@ -156,32 +165,47 @@ function clearNum() {
 }
 
 function calculate() {
-    total = num1 + operator + num1;
-    displayResult();
+    add();
+    subtract();
+    multiply();
+    divide();
 }
 
-function displayResult() {
-    
-}
-
-// Add
-const add = function(num1, num2) {
-	return parseInt(num1 + num2);
-};
-
-// Subtract
-const subtract = function(num1, num2) {
-	return parseInt(num1 - num2);
-};
-
-// Multiply
-const multiply = function(array) {
-    let answer = 1;
-    for (let item in array) {
-      answer *= array[item];
+function add() {
+    if (operator == '+') {  
+        total = num1 + num2;
+        displayTotal(total);
     }
-    return answer;
-  };
+    return;
+}
+
+function subtract() {
+    if (operator == '-') {  
+        total = num1 - num2;
+        displayTotal(total);
+    }
+    return;
+}
+
+function multiply() {
+    if (operator == '*') {  
+        total = num1 * num2;
+        displayTotal(total);
+    }
+    return;
+}
+
+function divide() {
+    if (operator == '/') {  
+        total = num1 / num2;
+        displayTotal(total);
+    }
+    return;
+}
+
+function displayTotal(total) {
+    screenValue.textContent = total;
+}
 
 function del() {
     num.pop();
@@ -193,27 +217,17 @@ function reset() {
     num2 = '';
     operator = '';
     total = '';
-    displayValue = '';
+    screenValue.textContent = '';
 }
 
-// function operate(num1 operator num2)
-
-// function reset()
-
-// function updateDisplay() with solution
-
-// hardest part is store all the values and call the operate() function with them
-
-// be able to string together several operations (12 + 7 - 5 * 3 = 42) => 
-// calculator should first evaluate the first pair of numbers (12 + 7), second display the result (19), and last use the result (19) as the first number in the new calculation along with the next operator (-)
-
-// round answers with long decimals so they don't overflow the screen
-
-//pressing = before entering all the numbers or an operator could cause problems!
-
-// display an error message if the user tries to divide by 0
-
-// don't allow more than one decimal (12.3.56..5)
-
-// double check / support - check MDN event.preventDefault
-
+function exceptions() {
+    const decimals = ['.', '.'];
+    try {
+        if (num2 == '0') throw 'Error';
+        if (decimals.every(i => screenValue.textContent.includes(i))) throw 'Error';
+        if (screenValue.textContent.length > 11) throw 'Overflow';
+    }
+    catch (err) {
+        screenValue.textContent = err;
+    }
+}
