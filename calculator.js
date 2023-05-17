@@ -138,8 +138,9 @@ function disablePoint(num) {
     const decimal = '.';
     if (num.includes(decimal)) {
         point.onclick = null;
-    }
-    return;
+    } else {
+    point.onclick = () => setNum('.'); 
+    };
 }
 
 function updateScreenValue(num) {
@@ -207,17 +208,17 @@ function updateScreenValue(num) {
 //     screenValue.textContent = total;
 // }
 
-// function del() {
-//     num.pop();
-//     screenValue.textContent = num;
-// }
+function del() {
+    num.pop();
+    updateScreenValue(num);
+}
 
-// function reset() {
-//     num = [];
-//     operator = '';
-//     total = '';
-//     screenValue.textContent = '';
-// }
+function reset() {
+    num = [];
+    operator = '';
+    total = '';
+    screenValue.textContent = '';
+}
 
 
 
@@ -228,7 +229,6 @@ function updateScreenValue(num) {
 //     const decimals = ['.', '.'];
 //     try {
 //         if (operator == '/' && num == '0') throw 'Error';
-//         if (decimals.every(i => screenValue.textContent.includes(i))) throw 'Error';
 //         if (screenValue.textContent.length > 11) throw 'Overflow';
 //     }
 //     catch (err) {
