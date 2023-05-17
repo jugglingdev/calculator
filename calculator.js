@@ -101,6 +101,7 @@ const backspace = document.querySelector('.delete');
 const clear = document.querySelector('.reset');
 
 let screenValue = document.querySelector('.screen-value');
+    screenValue.textContent = '0';
 
 let num = [];
 let total;
@@ -128,9 +129,17 @@ clear.onclick = () => reset();
 
 function setNum(buttonValue) {
     num.push(buttonValue);
+    disablePoint(num);
     updateScreenValue(num);
-    // disablePoint();
     // exceptions();
+}
+
+function disablePoint(num) {
+    const decimal = '.';
+    if (num.includes(decimal)) {
+        point.onclick = null;
+    }
+    return;
 }
 
 function updateScreenValue(num) {
@@ -138,86 +147,80 @@ function updateScreenValue(num) {
     screenValue.textContent = num;
 }
 
-function setOperator(buttonValue) {
-    operator = buttonValue;
-    updateTotal();
-}
+// function setOperator(buttonValue) {
+//     operator = buttonValue;
+//     updateTotal();
+// }
 
-function updateTotal() {
-    total = parseFloat(num);
-    clearNum();
-}
+// function updateTotal() {
+//     total = parseFloat(num);
+//     clearNum();
+// }
 
-function clearNum() {
-    num = [];
-}
+// function clearNum() {
+//     num = [];
+// }
 
-function calculate() {
-    add();
-    subtract();
-    multiply();
-    divide();
-}
+// function calculate() {
+//     add();
+//     subtract();
+//     multiply();
+//     divide();
+// }
 
-function add() {
-    num = parseFloat(num);
-    if (operator == '+') {  
-        total += num;
-        displayTotal(total);
-    };
-}
+// function add() {
+//     num = parseFloat(num);
+//     if (operator == '+') {  
+//         total += num;
+//         displayTotal(total);
+//     };
+// }
 
-function subtract() {
-    num = parseFloat(num);
-    if (operator == '-') {  
-        total -= num;
-        displayTotal(total);
-    }
-    return;
-}
-
-function multiply() {
-    num = parseFloat(num);
-    if (operator == '*') {  
-        total *= num;
-        displayTotal(total);
-    }
-    return;
-}
-
-function divide() {
-    num = parseFloat(num);
-    if (operator == '/') {  
-        total /= num;
-        displayTotal(total);
-    }
-    return;
-}
-
-function displayTotal(total) {
-    screenValue.textContent = total;
-}
-
-function del() {
-    num.pop();
-    screenValue.textContent = num;
-}
-
-function reset() {
-    num = [];
-    operator = '';
-    total = '';
-    screenValue.textContent = '';
-}
-
-
-// function disablePoint() {
-//     const dot = '.';
-//     if (screenValue.textContent.includes(dot)) {
-//         point.removeEventListener('click', setNum);
+// function subtract() {
+//     num = parseFloat(num);
+//     if (operator == '-') {  
+//         total -= num;
+//         displayTotal(total);
 //     }
 //     return;
 // }
+
+// function multiply() {
+//     num = parseFloat(num);
+//     if (operator == '*') {  
+//         total *= num;
+//         displayTotal(total);
+//     }
+//     return;
+// }
+
+// function divide() {
+//     num = parseFloat(num);
+//     if (operator == '/') {  
+//         total /= num;
+//         displayTotal(total);
+//     }
+//     return;
+// }
+
+// function displayTotal(total) {
+//     screenValue.textContent = total;
+// }
+
+// function del() {
+//     num.pop();
+//     screenValue.textContent = num;
+// }
+
+// function reset() {
+//     num = [];
+//     operator = '';
+//     total = '';
+//     screenValue.textContent = '';
+// }
+
+
+
 
 
 
