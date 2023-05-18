@@ -135,7 +135,7 @@ function setNum(buttonValue) {
     zeroAsFirstInput(num);
     disablePoint(num);
     overflow(num);
-    updateScreenValue(num);
+    formatNum(num);
     // exceptions();
 }
 
@@ -187,10 +187,19 @@ function overflow(num) {
     }
 }
 
-function updateScreenValue(num) {
+function formatNum(num) {
     num = num.join('');
-    screenValue.textContent = num;
+    num = Number(num);
+    updateScreenValue(num);
 }
+
+function updateScreenValue(num) {
+    let screenValueNum = num.toLocaleString(undefined, {
+        maximumFractionDigits: 5
+    });
+    screenValue.textContent = screenValueNum;
+}
+
 
 // function setOperator(buttonValue) {
 //     operator = buttonValue;
@@ -256,7 +265,7 @@ function del() {
     num.pop();
     disablePoint(num);
     overflow(num);
-    updateScreenValue(num);
+    formatNum(num);
 }
 
 function reset() {
