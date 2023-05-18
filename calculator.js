@@ -131,10 +131,24 @@ clear.onclick = () => reset();
 
 function setNum(buttonValue) {
     num.push(buttonValue);
+    pointAsFirstInput(num);
+    zeroAsFirstInput(num);
     disablePoint(num);
     overflow(num);
     updateScreenValue(num);
     // exceptions();
+}
+
+function pointAsFirstInput(num) {
+    if (num[0] == '.') {
+        num.unshift('0');
+    };
+}
+
+function zeroAsFirstInput(num) {
+    if (num[0] == '0' && num[1] != null && num[1] != '.') {
+        num.shift();
+    }
 }
 
 function disablePoint(num) {
@@ -250,7 +264,7 @@ function reset() {
     operator = '';
     total = '';
     screenValue.textContent = '';
-    
+
     one.onclick = () => setNum('1');
     two.onclick = () => setNum('2');
     three.onclick = () => setNum('3');
@@ -261,6 +275,7 @@ function reset() {
     eight.onclick = () => setNum('8');
     nine.onclick = () => setNum('9');
     zero.onclick = () => setNum('0');
+    point.onclick = () => setNum('.'); 
 }
 
 
@@ -271,7 +286,6 @@ function reset() {
 // function exceptions() {
 //     try {
 //         if (operator == '/' && num == '0') throw 'Error';
-//         if (screenValue.textContent.length > 11) throw 'Overflow';
 //     }
 //     catch (err) {
 //         screenValue.textContent = err;
