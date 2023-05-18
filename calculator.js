@@ -79,6 +79,8 @@ function changeTextColors(value) {
 
 // Calculator
 
+const numButton = document.querySelectorAll('.num-button');
+
 const one = document.querySelector('.one');
 const two = document.querySelector('.two');
 const three = document.querySelector('.three');
@@ -130,6 +132,7 @@ clear.onclick = () => reset();
 function setNum(buttonValue) {
     num.push(buttonValue);
     disablePoint(num);
+    overflow(num);
     updateScreenValue(num);
     // exceptions();
 }
@@ -141,6 +144,33 @@ function disablePoint(num) {
     } else {
     point.onclick = () => setNum('.'); 
     };
+}
+
+function overflow(num) {
+    if (num.length > 10) {
+        one.onclick = null;
+        two.onclick = null;
+        three.onclick = null;
+        four.onclick = null;
+        five.onclick = null;
+        six.onclick = null;
+        seven.onclick = null;
+        eight.onclick = null;
+        nine.onclick = null;
+        zero.onclick = null;
+        point.onclick = null; 
+    } else if (num.length <= 10) {
+        one.onclick = () => setNum('1');
+        two.onclick = () => setNum('2');
+        three.onclick = () => setNum('3');
+        four.onclick = () => setNum('4');
+        five.onclick = () => setNum('5');
+        six.onclick = () => setNum('6');
+        seven.onclick = () => setNum('7');
+        eight.onclick = () => setNum('8');
+        nine.onclick = () => setNum('9');
+        zero.onclick = () => setNum('0');
+    }
 }
 
 function updateScreenValue(num) {
@@ -210,6 +240,8 @@ function updateScreenValue(num) {
 
 function del() {
     num.pop();
+    disablePoint(num);
+    overflow(num);
     updateScreenValue(num);
 }
 
@@ -218,6 +250,17 @@ function reset() {
     operator = '';
     total = '';
     screenValue.textContent = '';
+    
+    one.onclick = () => setNum('1');
+    two.onclick = () => setNum('2');
+    three.onclick = () => setNum('3');
+    four.onclick = () => setNum('4');
+    five.onclick = () => setNum('5');
+    six.onclick = () => setNum('6');
+    seven.onclick = () => setNum('7');
+    eight.onclick = () => setNum('8');
+    nine.onclick = () => setNum('9');
+    zero.onclick = () => setNum('0');
 }
 
 
@@ -226,7 +269,6 @@ function reset() {
 
 
 // function exceptions() {
-//     const decimals = ['.', '.'];
 //     try {
 //         if (operator == '/' && num == '0') throw 'Error';
 //         if (screenValue.textContent.length > 11) throw 'Overflow';
